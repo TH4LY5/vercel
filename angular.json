@@ -3,13 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "my-adminlte3-demo-app": {
+    "angular": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "sass"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -17,34 +13,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/my-adminlte3-demo-app",
+            "outputPath": "dist/angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.sass",
-              "node_modules/admin-lte/plugins/fontawesome-free/css/all.css",
-              "node_modules/admin-lte/plugins/overlayScrollbars/css/OverlayScrollbars.css",
-              "node_modules/admin-lte/dist/css/adminlte.css"
-            ],
-            "scripts": [
-              "node_modules/admin-lte/plugins/jquery/jquery.js",
-              "node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.js",
-              "node_modules/admin-lte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.js",
-              "node_modules/admin-lte/dist/js/adminlte.js",
-              "node_modules/admin-lte/dist/js/demo.js",
-              "node_modules/admin-lte/plugins/jquery-mousewheel/jquery.mousewheel.js",
-              "node_modules/admin-lte/plugins/raphael/raphael.js",
-              "node_modules/admin-lte/plugins/jquery-mapael/jquery.mapael.js",
-              "node_modules/admin-lte/plugins/chart.js/Chart.js",
-              "node_modules/admin-lte/dist/js/pages/dashboard2.js"
-            ]
+            "aot": false,
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -59,6 +36,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -67,11 +45,6 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
                 }
               ]
             }
@@ -80,18 +53,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-adminlte3-demo-app:build"
+            "browserTarget": "angular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "my-adminlte3-demo-app:build:production"
+              "browserTarget": "angular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "my-adminlte3-demo-app:build"
+            "browserTarget": "angular:build"
           }
         },
         "test": {
@@ -101,13 +74,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.sass"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
         },
@@ -119,24 +87,23 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "my-adminlte3-demo-app:serve"
+            "devServerTarget": "angular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "my-adminlte3-demo-app:serve:production"
+              "devServerTarget": "angular:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "my-adminlte3-demo-app"
+    }
+  },
+  "defaultProject": "angular"
 }
